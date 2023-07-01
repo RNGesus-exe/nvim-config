@@ -102,6 +102,7 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
+    config = { " require('plugins/mason') " },
     loaded = true,
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
@@ -149,10 +150,16 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope.nvim"] = {
-    config = { " require('plugins/telescope') " },
+    config = { "require('plugins/telescope')" },
     loaded = true,
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  undotree = {
+    config = { " require('plugins/undotree') " },
+    loaded = true,
+    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -166,18 +173,26 @@ time([[Defining packer_plugins]], false)
 time([[Config for lsp-zero.nvim]], true)
  require('plugins/lsp') 
 time([[Config for lsp-zero.nvim]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+ require('plugins/mason') 
+time([[Config for mason.nvim]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+ require('plugins/undotree') 
+time([[Config for undotree]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
  require('plugins/lualine') 
 time([[Config for lualine.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
- require('plugins/telescope') 
-time([[Config for telescope.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
  require('plugins/treesitter') 
 time([[Config for nvim-treesitter]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require('plugins/telescope')
+time([[Config for telescope.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

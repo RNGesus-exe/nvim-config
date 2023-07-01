@@ -1,15 +1,22 @@
 require('packer').startup(function()
-    
+
     -- Package Manager
     use {
         'wbthomason/packer.nvim'
-    } 
+    }
+
+    -- Mason
+    use {
+        "williamboman/mason.nvim",
+        run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        config = [[ require('plugins/mason') ]]
+    }
 
     -- Color Theme
     use {
         'tomasr/molokai'
     }
-    
+
     -- Status Bar
     use {
         'nvim-lualine/lualine.nvim',
@@ -17,7 +24,7 @@ require('packer').startup(function()
         config = [[ require('plugins/lualine') ]]
     }
 
-    -- IDE
+    -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate",
@@ -28,15 +35,19 @@ require('packer').startup(function()
     }
 
     -- Fuzzy Search / Telescope
+     use({ "nvim-lua/plenary.nvim" })
+     use({
+      "nvim-telescope/telescope.nvim",
+      config = [[require('plugins/telescope')]],
+      requires = "nvim-lua/plenary.nvim",
+     })
+
+    -- UndoTree
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { 
-            {'nvim-lua/plenary.nvim'} 
-        },
-        config = [[ require('plugins/telescope') ]]
+        'mbbill/undotree',
+        config = [[ require('plugins/undotree') ]]
     }
-    
+
     -- LSP Setup
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -44,12 +55,7 @@ require('packer').startup(function()
         requires = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
-            {                                  -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
+            {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
             -- Autocompletion
