@@ -1,5 +1,4 @@
 require('packer').startup(function()
-
     -- Package Manager
     use {
         'wbthomason/packer.nvim'
@@ -15,6 +14,12 @@ require('packer').startup(function()
     -- Color Theme
     use {
         'tomasr/molokai'
+    }
+
+    -- Indent Line Braces
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = [[ require('plugins/indent_line') ]]
     }
 
     -- Status Bar
@@ -35,12 +40,12 @@ require('packer').startup(function()
     }
 
     -- Fuzzy Search / Telescope
-     use({ "nvim-lua/plenary.nvim" })
-     use({
-      "nvim-telescope/telescope.nvim",
-      config = [[require('plugins/telescope')]],
-      requires = "nvim-lua/plenary.nvim",
-     })
+    use({ "nvim-lua/plenary.nvim" })
+    use({
+        "nvim-telescope/telescope.nvim",
+        config = [[require('plugins/telescope')]],
+        requires = "nvim-lua/plenary.nvim",
+    })
 
     -- UndoTree
     use {
@@ -54,21 +59,20 @@ require('packer').startup(function()
         branch = 'v2.x',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            { 'neovim/nvim-lspconfig' },           -- Required
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
+            { 'hrsh7th/nvim-cmp' },   -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },   -- Required
         },
         config = [[ require('plugins/lsp') ]]
     }
 
     -- Git
-    use{
+    use {
         'tpope/vim-fugitive'
     }
-
 end)

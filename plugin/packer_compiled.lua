@@ -84,6 +84,12 @@ _G.packer_plugins = {
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["indent-blankline.nvim"] = {
+    config = { " require('plugins/indent_line') " },
+    loaded = true,
+    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lsp-zero.nvim"] = {
     config = { " require('plugins/lsp') " },
     loaded = true,
@@ -169,6 +175,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+ require('plugins/treesitter') 
+time([[Config for nvim-treesitter]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+ require('plugins/undotree') 
+time([[Config for undotree]], false)
 -- Config for: lsp-zero.nvim
 time([[Config for lsp-zero.nvim]], true)
  require('plugins/lsp') 
@@ -177,18 +191,14 @@ time([[Config for lsp-zero.nvim]], false)
 time([[Config for mason.nvim]], true)
  require('plugins/mason') 
 time([[Config for mason.nvim]], false)
--- Config for: undotree
-time([[Config for undotree]], true)
- require('plugins/undotree') 
-time([[Config for undotree]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+ require('plugins/indent_line') 
+time([[Config for indent-blankline.nvim]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
  require('plugins/lualine') 
 time([[Config for lualine.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
- require('plugins/treesitter') 
-time([[Config for nvim-treesitter]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('plugins/telescope')

@@ -7,5 +7,8 @@ vim.opt.softtabstop = 4  --When using backspace it deletes 4 characters space
 vim.opt.wrap = false
 vim.opt.fileencoding = "utf-8"
 
+--Line Number
+vim.wo.number = true
+
 -- Color Scheme
 vim.cmd [[colorscheme molokai]]
