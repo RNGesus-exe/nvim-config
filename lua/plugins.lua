@@ -1,7 +1,7 @@
 require('packer').startup(function()
     -- Package Manager
     use {
-        'wbthomason/packer.nvim'
+        'wbthomason/packer.nvim',
     }
 
     -- Mason
@@ -11,16 +11,22 @@ require('packer').startup(function()
         config = [[ require('plugins/mason') ]]
     }
 
+    -- Linter
+    use {
+        "mfussenegger/nvim-lint",
+        config = [[ require('plugins/linter') ]]
+    }
+
     -- Color Theme
     use {
         'tomasr/molokai'
     }
 
     -- Indent Line Braces
-    use {
-        "lukas-reineke/indent-blankline.nvim",
-        config = [[ require('plugins/indent_line') ]]
-    }
+    -- use {
+    --    "lukas-reineke/indent-blankline.nvim",
+    --    config = [[ require('plugins/indent_line') ]]
+    -- }
 
     -- Status Bar
     use {
@@ -59,14 +65,14 @@ require('packer').startup(function()
         branch = 'v2.x',
         requires = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' },           -- Required
+            { 'neovim/nvim-lspconfig' },             -- Required
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },   -- Required
+            { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },   -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
         },
         config = [[ require('plugins/lsp') ]]
     }

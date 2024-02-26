@@ -3,7 +3,6 @@ local lsp = require('lsp-zero').preset("recommended")
 lsp.ensure_installed({
     'clangd',
     'lua_ls',
-
 })
 
 local cmp = require('cmp')

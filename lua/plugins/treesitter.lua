@@ -5,7 +5,9 @@ require "nvim-treesitter.configs".setup {
   ensure_installed = "all",
   auto_install = true,
   highlight = {
-    enable = true, -- enable = true (false will disable the whole extension)
+    enable = true,
+    disable = {"bash", "bitbake"},
+    -- enable = true (false will disable the whole extension)
     -- disable = { "c", "rust" },  -- list of language that will be disabled
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.

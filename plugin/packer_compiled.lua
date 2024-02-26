@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?.lua;/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?/init.lua;/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?.lua;/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/rngesusexe/.cache/nvim/packer_hererocks/2.1.1692716794/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -84,12 +84,6 @@ _G.packer_plugins = {
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["indent-blankline.nvim"] = {
-    config = { " require('plugins/indent_line') " },
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
   ["lsp-zero.nvim"] = {
     config = { " require('plugins/lsp') " },
     loaded = true,
@@ -122,6 +116,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lint"] = {
+    config = { " require('plugins/linter') " },
+    loaded = true,
+    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-lint",
+    url = "https://github.com/mfussenegger/nvim-lint"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -175,34 +175,34 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
- require('plugins/treesitter') 
-time([[Config for nvim-treesitter]], false)
--- Config for: undotree
-time([[Config for undotree]], true)
- require('plugins/undotree') 
-time([[Config for undotree]], false)
--- Config for: lsp-zero.nvim
-time([[Config for lsp-zero.nvim]], true)
- require('plugins/lsp') 
-time([[Config for lsp-zero.nvim]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
- require('plugins/mason') 
-time([[Config for mason.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
- require('plugins/indent_line') 
-time([[Config for indent-blankline.nvim]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
  require('plugins/lualine') 
 time([[Config for lualine.nvim]], false)
+-- Config for: lsp-zero.nvim
+time([[Config for lsp-zero.nvim]], true)
+ require('plugins/lsp') 
+time([[Config for lsp-zero.nvim]], false)
+-- Config for: nvim-lint
+time([[Config for nvim-lint]], true)
+ require('plugins/linter') 
+time([[Config for nvim-lint]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('plugins/telescope')
 time([[Config for telescope.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+ require('plugins/treesitter') 
+time([[Config for nvim-treesitter]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+ require('plugins/mason') 
+time([[Config for mason.nvim]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+ require('plugins/undotree') 
+time([[Config for undotree]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
