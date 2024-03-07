@@ -74,75 +74,34 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  LuaSnip = {
+  ["copilot.vim"] = {
     loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com/L3MON4D3/LuaSnip"
+    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
-  ["cmp-nvim-lsp"] = {
+  ["gruvbox.nvim"] = {
     loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
-    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
-  },
-  ["lsp-zero.nvim"] = {
-    config = { " require('plugins/lsp') " },
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
-    url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["lualine.nvim"] = {
-    config = { " require('plugins/lualine') " },
     loaded = true,
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["mason-lspconfig.nvim"] = {
+  ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
-    url = "https://github.com/williamboman/mason-lspconfig.nvim"
-  },
-  ["mason.nvim"] = {
-    config = { " require('plugins/mason') " },
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/mason.nvim",
-    url = "https://github.com/williamboman/mason.nvim"
-  },
-  molokai = {
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/molokai",
-    url = "https://github.com/tomasr/molokai"
-  },
-  ["nvim-cmp"] = {
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-cmp",
-    url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-lint"] = {
-    config = { " require('plugins/linter') " },
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-lint",
-    url = "https://github.com/mfussenegger/nvim-lint"
-  },
-  ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
-    url = "https://github.com/neovim/nvim-lspconfig"
+    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { " require('plugins/treesitter') " },
     loaded = true,
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-ts-rainbow"] = {
-    loaded = true,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
-    url = "https://github.com/p00f/nvim-ts-rainbow"
-  },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    loaded = true,
+    path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
@@ -156,13 +115,11 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope.nvim"] = {
-    config = { "require('plugins/telescope')" },
     loaded = true,
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   undotree = {
-    config = { " require('plugins/undotree') " },
     loaded = true,
     path = "/home/rngesusexe/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
@@ -175,34 +132,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
- require('plugins/lualine') 
-time([[Config for lualine.nvim]], false)
--- Config for: lsp-zero.nvim
-time([[Config for lsp-zero.nvim]], true)
- require('plugins/lsp') 
-time([[Config for lsp-zero.nvim]], false)
--- Config for: nvim-lint
-time([[Config for nvim-lint]], true)
- require('plugins/linter') 
-time([[Config for nvim-lint]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require('plugins/telescope')
-time([[Config for telescope.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
- require('plugins/treesitter') 
-time([[Config for nvim-treesitter]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
- require('plugins/mason') 
-time([[Config for mason.nvim]], false)
--- Config for: undotree
-time([[Config for undotree]], true)
- require('plugins/undotree') 
-time([[Config for undotree]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
