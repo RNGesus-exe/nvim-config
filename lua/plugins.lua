@@ -1,84 +1,33 @@
-require('packer').startup(function()
-    -- Package Manager
-    use {
-        'wbthomason/packer.nvim',
-    }
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
 
-    -- Mason
-    use {
-        "williamboman/mason.nvim",
-        run = ":MasonUpdate", -- :MasonUpdate updates registry contents
-        config = [[ require('plugins/mason') ]]
-    }
+local packer_bootstrap = ensure_packer()
 
-    -- Linter
-    use {
-        "mfussenegger/nvim-lint",
-        config = [[ require('plugins/linter') ]]
-    }
+return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+  -- My plugins here
+  use 'nvim-lualine/lualine.nvim'
+  use 'ellisonleao/gruvbox.nvim'
+  use 'nvim-tree/nvim-tree.lua'
+  use 'nvim-tree/nvim-web-devicons'
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'mbbill/undotree'
+  use 'tpope/vim-fugitive'
+  use 'github/copilot.vim'
 
-    -- Color Theme
-    use {
-        'tomasr/molokai'
-    }
-
-    -- Indent Line Braces
-    -- use {
-    --    "lukas-reineke/indent-blankline.nvim",
-    --    config = [[ require('plugins/indent_line') ]]
-    -- }
-
-    -- Status Bar
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-        config = [[ require('plugins/lualine') ]]
-    }
-
-    -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ":TSUpdate",
-        requires = {
-            "p00f/nvim-ts-rainbow"
-        },
-        config = [[ require('plugins/treesitter') ]]
-    }
-
-    -- Fuzzy Search / Telescope
-    use({ "nvim-lua/plenary.nvim" })
-    use({
-        "nvim-telescope/telescope.nvim",
-        config = [[require('plugins/telescope')]],
-        requires = "nvim-lua/plenary.nvim",
-    })
-
-    -- UndoTree
-    use {
-        'mbbill/undotree',
-        config = [[ require('plugins/undotree') ]]
-    }
-
-    -- LSP Setup
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },             -- Required
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
-        },
-        config = [[ require('plugins/lsp') ]]
-    }
-
-    -- Git
-    use {
-        'tpope/vim-fugitive'
-    }
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
