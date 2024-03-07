@@ -13,9 +13,9 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'ellisonleao/gruvbox.nvim'
   -- My plugins here
   use 'nvim-lualine/lualine.nvim'
-  use 'ellisonleao/gruvbox.nvim'
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-treesitter/nvim-treesitter'
@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'mbbill/undotree'
   use 'tpope/vim-fugitive'
-  use 'github/copilot.vim'
+--use 'github/copilot.vim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
