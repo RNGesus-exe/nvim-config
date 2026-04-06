@@ -1,59 +1,67 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git", "clone", "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
+require("lazy").setup({
+    {
+        'ellisonleao/gruvbox.nvim',
+        priority = 1000, -- load colorscheme first
+        config = function()
+            vim.o.termguicolors = true
+            vim.cmd [[ colorscheme gruvbox ]]
+        end,
+    },
 
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function() require("plugin_config.lualine") end,
+    },
 
--- My plugins here
-  use 'ellisonleao/gruvbox.nvim'
-  use 'nvim-lualine/lualine.nvim'
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'mbbill/undotree'
-  use 'tpope/vim-fugitive'
---use 'github/copilot.vim'
+    {
+        'nvim-tree/nvim-tree.lua',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function() require("plugin_config.nvim-tree") end,
+    },
 
---LSP Dependencies
-use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x',
-  requires = {
-    --- Uncomment the two plugins below if you want to manage the language servers from neovim
-    -- {'williamboman/mason.nvim'},
-    -- {'williamboman/mason-lspconfig.nvim'},
+    'nvim-tree/nvim-web-devicons',
+    'nvim-lua/plenary.nvim',
 
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/cmp-buffer'},
-    {'hrsh7th/cmp-path'},
-    {'L3MON4D3/LuaSnip'},
-    {'saadparwaiz1/cmp_luasnip'},
-    {'rafamadriz/friendly-snippets'},
-  }
-}
+    {
+        'mbbill/undotree',
+        config = function() require("plugin_config.undotree") end,
+    },
 
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
+    'tpope/vim-fugitive',
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        config = function() require("plugin_config.treesitter") end,
+    },
+
+    {
+        'nvim-telescope/telescope.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function() require("plugin_config.telescope") end,
+    },
+
+    -- LSP + Completion
+    {
+        'williamboman/mason-lspconfig.nvim',
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'williamboman/mason.nvim',
+            { 'saghen/blink.cmp', version = '*', dependencies = { 'rafamadriz/friendly-snippets' } },
+        },
+        config = function() require("plugin_config.lsp-zero") end,
+    },
+})

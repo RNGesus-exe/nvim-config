@@ -1,3 +1,7 @@
+-- Required by nvim-tree (must be set before plugin loads)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Tab settings
 vim.opt.expandtab = true --Converts tab into whitespace
 vim.opt.shiftwidth = 4   --Makes tab amount 4 characters
